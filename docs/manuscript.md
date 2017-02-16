@@ -30,7 +30,7 @@ It has been shown that _in silico_ prediction of antimicrobial resistance [@Zhao
 
 We have previously developed the software platform Panseq, for the analyses of thousands of genomes in a pan-genome context, where both the presence / absence of the accessory genome and SNPs within the shared core-genome are computed [@Laing2010]. Additionally, we recently released a platform for the predictive genomics of _Escherichia coli_, called SuperPhy, in which markers statistically biased within groups of bacteria, based on any metadata category, can be identified [@Whiteside2016].
 
-In this study we use our previously created software to examine the pan-genome of _Salmonella enterica_, a species that contains human-adapted strains responsible for typhoid fever, as well as a large number of non-typhoidal strains responsible for an estimated 93.8 million annual cases of enteric illness worldwide [@Gal-Mor2014, @Majowicz2010]. We identify _S. enterica_ species- and subspecies-specific markers, as well as markers predictive of serotype for subspecies enterica. While this study focused on _S. senterica_, the tools and approach are broadly applicable to any species or collection of genomes. 
+In this study we use our previously created software to examine the pan-genome of _Salmonella enterica_, a species that contains human-adapted strains responsible for typhoid fever, as well as a large number of non-typhoidal strains responsible for an estimated 93.8 million annual cases of enteric illness worldwide [@Gal-Mor2014, @Majowicz2010]. The species _S. enterica_ is divided into six subspecies: _enterica_, _salamae_, _arizonae_, _diarizonae_, _houtenae_, and _indica_. Over 99% of human disease caused by _S. enterica_ is done so by subspecies _enterica_, with the World Health Organization estimating that _S. enterica_ infections from contaminated food alone, constitute a loss of 6.43 million disability adjusted life years worldwide, more than any other enteric pathogen [@Kirk2015]. We identify _S. enterica_ species- and subspecies-specific markers, as well as markers predictive of serotype for subspecies enterica. While this study focused on _S. senterica_, the tools and approach are broadly applicable to any species or collection of genomes. 
 
 
 # Results
@@ -53,7 +53,7 @@ Given the above information, all genomes from the five subspecies other than ent
 
 
 ## Phylogeny of _S. enterica_ using the conserved core genome
-Based on the distribution of the pan-genome presented in Figure @figure_senterica_pan_histogram, the "conserved core" of _S. enterica_ was set at greater than 4500 genomes, to fully capture the conserved genomic regions within the species. A phylogeny based on the SNPs among these shared regions was created, and is shown along with the distribution of the _S. enterica_ species specific regions in Figure @figure_senterica_core_phylogeny. As can be seen, the majority of the genomes are subspecies enterica, and the other five subspecies are relatively more distant in the order of indica, salamae, houtenae, diarizonae, and arizonae. The branch lengths however grow longer in the order of diarizonae, salamae, indica, houtenae, and arizonae, which mirrors the declining number of species-specific regions contained within genomes of these subspecies, which is also shown in Figure @figure_core_vs_contig. 
+Based on the distribution of the pan-genome presented in Figure @figure_senterica_pan_histogram, the "conserved core" of _S. enterica_ was set at greater than 4500 genomes, to fully capture the conserved genomic regions within the species. A phylogeny based on the SNPs among these shared regions was created, and is shown along with the distribution of the _S. enterica_ species specific regions in Figure @figure_senterica_core_phylogeny. As can be seen, the majority of the genomes are subspecies enterica, and the other five subspecies are relatively more distant in the order of indica, salamae, houtenae, diarizonae, and arizonae. However, the order of subspecies in order of declining species specific regions is: enterica, diarizonae, salamae, indica, houtenae, and arizonae, which is shown in Figure @figure_core_vs_contig. 
 
 The serovar distribution within subspecies enterica was shown to be largely concordant with phylogeny, as demonstrated in Figure @figure_senterica_serovar_core_phylogeny, where the ten most abundant serovars in the current study are highlighted. However, not all serovars clustered as monophyletic groups, as can be seen with serovar Bareilly; nor were all clades found to be comprised of single serovars, demonstrated by the clade containing genomes of serovars Bareilly and Agona. 
  
@@ -82,9 +82,7 @@ Having identified species-specific markers, we employed the same techniques, uti
 Subspecies enterica genomes were the vast majority of those available, so we attempted to identified serovar-specific markers for the top five serovars, in the same manner that we identified subspecies-specific markers. We found that there were no genomic markers that uniquely defined any of the serovars based on their presence or absence; however, there were a number of genomic regions that were universally conserved in their presence or absence among serovars, even though theses same markers were both present and absent in genomes of other serotypes. The number of markers universal for presence or absence among the enterica serovars is shown in Table 6.
 
 #Discussion
-## _S. enterica_ pan-genome
- The species _S. enterica_ is divided into six subspecies: _enterica_, _salamae_, _arizonae_, _diarizonae_, _houtenae_, and _indica_. Over 99% of human disease caused by _S. enterica_ is done so by subspecies _enterica_, with the World Health Organization estimating that _S. enterica_ infections from contaminated food alone, constitute a loss of 6.43 million disability adjusted life years worldwide, more than any other enteric pathogen [@Kirk2015].
-
+## _S. enterica_ pan-genome 
 Previous examinations of the _S. enterica_ pan-genome were based on relatively small dataset of 45 and 73 genomes [@Jacobsen2011,@Leekitcharoenphon2012]. While others have analyzed thousands of _S. enterica_ genomes, the analyses have not been to examine the population structure. For example, in demonstrating the software program Roary, 1000 _S._ Typhi genomes were used to test the program [@Page2015]. Likewise, the GenomeTrackR project utilized 32 _S. enterica_ genomes to identify a _S. enterica_ core, which was subsequently used as the basis for genetic distance estimates for nearly 20,000 genomes [@Pettengill2016].
 
 Previous estimates placed the core-genome size of _S. enterica_ at ~2800 gene families, and the pan-genome at ~10,000 gene families [@Jacobsen2011]. The current study identified a strict core of 1.5 Mbp, which given an average gene size of 1000bp is ~1500 genes, and a much larger pan-genome at ~25,300 genes. Previous analyses found _S. enterica_ to have a closed pan-genome [@Jacobsen2011], and thus the rate of discovery for new genomic regions would decrease for each new genome of the species sequenced [@Tettelin2005]. 
@@ -117,17 +115,13 @@ The current study identified a large accessory gene pool that contained many hyp
 
 ## Specific regions for subspecies and serovar
 
-The phylogenetic relationship of the six _S. enterica_ subspecies has been previously described, which the current study recapitulates [@Desai2013]. However, the branch lengths of the core genome treeIt is interesting that the number of _S. enterica_ species-specific markers found within the  
+The phylogenetic relationship of the six _S. enterica_ subspecies has been previously described, which the current study recapitulates [@Desai2013]. However, the number of species-specific regions found within each subspecies does not follow the same pattern. For example, diarizonae is more distantly related to enterica than subspecies indica, but contains more species-specific regions, and the branch lengths on the tree are shorter. This indicates that although the diarizonae strains diverged longer ago than the houtenae strains, they have accumulated less genomic change. Both subspecies diarizone and houtenae strains are associated with reptile-acquired salmonellosis [@Schroter2004,@Horvath2016], but the differences in genomic change may reflect the specific reptile niches that each inhabit.
 
+Genomic regions specific to each subspecies were identified, the presence of which were unambiguously indicative of each subspecies. The most abundant subspecies in the current analyses, enterica, had the fewest specific markers present (9), while the most distantly related subspecies arizonae, had the most specific markers (207). These results indicate that just as core genome size decreases with the number of genomes examined, so too do the number of markers "core" to each subspecies. As more genomes in subspecies arizone and closely related subspecies are examined, we would expect fewer genomic regions to remain specific for the subspecies. This has important implications for designing a set of markers indicative for subspecies, indicating that a group of redundant markers should be used, and that a sampling of the diversity within a subspecies is first required to identify genomic regions that are truly core.
 
-Subspecies|No. Markers
-----------|------------
-arizonae|207
-diarizonae|93
-enterica|9
-houtenae|134
-indica|192
-salamae|135
+This was also observed within serotype for subspecies enterica strains. The original study examining the pan-genome of _S. enterica_ used a set of 45 genomes and was able to identify unique gene families for each serotype examined, with Enteritidis having the fewest (29), and Typhi having the most (349) [@Jacobsen2011]. The results of the current study showed no unique genomic regions for any of the serovars with a sample set of 4893 quality filtered genomes. Although genomic regions universally present for each serovar were observed, and followed the same pattern with Enteritidis having the fewest (18), and Typhi having the most (288), these regions were also observed among genomes of other serotypes.
+
+When examining the average number of the 404 species-specific regions found among the enterica serovars, it was interesting to observe that Enteritidis, which had the fewest number of universal genomic regions, had the highest average number of species-specific regions; likewise Typhi, which had the most universally shared genomic regions, had one of the lowest averages of species-specific regions present. These results indicate that Enteritidis is the serovar that is closest to being the "core" example of a _S. enterica_ genome, while Typhi is the serovar that is the most divergent. _S._ Enteritidis is the most common cause of enteric _Salmonella_ infection, causing upwards of one quarter of all infections, and is prevalent in chickens as well as their eggs [@Chai2012]. Conversely, _S._ Typhi is a human adapted serovar, responsible for Typhoid fever, and observed to have undergone genome degradation, rearrangement, and acquisition through horizontal gene-transfer, as it has evolved within its human host [@Klemm2016, @Sabbagh2010]. It thus appears that genomic change enabling adaptation to a host creates a genomic pool that distinguishes a group from others of the same species. At the same time, genetically similar serovars not undergoing selection for genomic change are much harder to individually distinguish as separate groups, but much easier to identify as members of the subspecies.   
 
 ## Core and Pan-genome comparison
 Most phylogentic studies focus on variation within homologues in the core genome to infer evolutionary relationships [@Treangen2014], as paralogues and horizontally transfered elements confound the evolutionary signal found in genes obtained through vertical descent over time [@Gabaldon2013]. While this approach is undoubtedly useful for long-term evolutionary analyses, when attempting to identify phenotypic linkages between phylogenetic clades, the accessory genome needs to be taken into account, as non-ubiquitous genomic regions allow different groups within the species to occupy and thrive in specific niches [@Polz2013]. Additionally, it has recently been shown that regulatory switching to non-homologous regulatory regions acquired via horizontal gene transfer happens across the domain bacteria [@Oren2014]. It was further shown that regulatory regions can move without the genes they regulate moving, and that at least 16% of the differences in expression observed within an _E. coli_ population were explained by this regulatory switching. 
@@ -136,7 +130,6 @@ It is therefore prudent to examine both the accessory genome, and not just genes
 
 
 
- 
 # Tables
 |Subspecies|No.|
 -----------|----
@@ -279,7 +272,7 @@ Weltevreden|426|608
 Bareilly|87|436
 Newport|226|360
 
-:Table 6. The number of pan-genome regions that were universally present and absent, as well as statistically over- or under-represented in comparison to all other genomes, within the 4870 subspecies enterica genomes of this study.
+:Table 6. The number of pan-genome regions that were universally present and absent, as well as statistically over- or under-represented in comparison to all other genomes, within the ten most abundant serotypes within the 4870 subspecies enterica genomes of this study.
 
 
 

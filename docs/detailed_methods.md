@@ -48,51 +48,7 @@ Panseq was run with the following command:
 
     perl ~/workspace/Panseq/lib/panseq.pl senterica.batch
     
-### Getting a cohort of non-_Salmonella enterica_ for comparsion
- 
- We wished to limit the set of potential species-specific markers by screening them against a small number of diverse bacterial species.
- 
-    wget -v --ftp-user=anonymous --ftp-password=chadlaing@inoutbox.com ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/assembly_summary.txt
-
-Closed genomes from closely related species were selected as follows, for each species (_Escherichia coli_, _Citrobacter_, _Shigella_, _Klebsiella_, _Staphylococcus_, _Listeria_ ):
-
-    grep 'Complete Genome' assembly_summary.txt | grep 'Escherichia coli' | head -5 >> screen_genomes.txt
-    
-The list of file locations was obtained as before:
-
-    cut -f 20 screen_genomes.txt | sed -e 's/\(.*\)\(GCA_.*\)/ftp:\/\/ftp.ncbi.nlm.nih.gov\/genomes\/all\/\2\/\2_genomic.fna.gz/' > screen_files.txt
-    
-And were downloaded with:
-
-    wget -v --ftp-user=anonymous --ftp-password=chadlaing@inoutbox.com -i ../screen_files.txt
-    
-
-In order to use the GenBank accession as the strain name for subsequent analyses, the following script was run:
-
-    perl src/single_file_check.pl data/screen/genomes/
-
-The potential core genomic regions were screened against this set using Panseq with the following settings:
-
-    queryFile  /home/chad/workspace/fronvite/analyses/senterica_panseq/coreGenomeFragments.fasta
-    queryDirectory /home/chad/workspace/fronvite/data/screen/genomes/
-    baseDirectory   /home/chad/workspace/fronvite/analyses/seneterica_screen/
-    numberOfCores   3
-    mummerDirectory /usr/bin/
-    blastDirectory  /usr/bin/
-    muscleExecutable    /usr/bin/muscle
-    fragmentationSize   0
-    percentIdentityCutoff   90
-    coreGenomeThreshold	1000
-    runMode pan
-    overwrite   1
-    nameOrId	name
-    minimumNovelRegionSize  1000
-
-and run with:
-
-    perl ~/workspace/Panseq/lib/panseq.pl analyses/seneterica_screen.batch
-    
-Only 276 hits, so we submitted the entire potential core to the online NCBI blast website.
+We submitted the entire potential core to the online NCBI blast website.
 We split the coreGenomeFragments.fasta file into two parts, as all together were exceeding the memory usage of the NCBI server. The two _S. enterica_ potential core files were created as follows:
 
     head -3832 coreGenomeFragments.fasta > senterica_core1.fasta
@@ -479,9 +435,6 @@ The number 3 was subtracted from each count, to account for the 3 header lines
  
     
 
-
-    
-
 ## Putative functional assignment of the 405 _S. enterica_ species specific regions
 The 405 regions were screened across the GenBank `nr` database using `blastx` with the following settings:
 
@@ -520,9 +473,6 @@ Searched for `lcl|1476306755000` and `lcl|2952612439000` and deleted the rows fr
 The frequency of the putative functions, taking the top functional hit, for each of the remaining 403 regions was created as follows:
 
     perl src/functional_counts.pl analyses/405_species_specific_regions/405_specific_function.txt > analyses/405_species_specific_regions/functional_frequency.txt
-    
-Allowing for multiple annotations of the same putative protein, the fequency of each was generated as follows:
-
     
 
 ## SISTR analyses of missing serovars
@@ -581,5 +531,10 @@ The headers on the binary and snp data tables were not identical to the metadata
 and
 
     perl src/convert_headers.pl analyses/panseq_cdhit_senterica_core/snp_table.txt  > analyses/panseq_cdhit_senterica_core/snp_table_fixed_headers.txt
+    
+
+SNP row names were added as follows:
+
+    perl src/add_snp_column_id.pl analyses/panseq_cdhit_senterica_core/snp_table_fixed_headers_bad_removed.txt > analyses/panseq_cdhit_senterica_core/snp_table_fixed_headers_bad_removed_column_id.txt 
 
 
